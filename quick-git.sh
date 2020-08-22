@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # for quick commit
-#
-#
 
 git add .
 echo "Give commit Name:"
