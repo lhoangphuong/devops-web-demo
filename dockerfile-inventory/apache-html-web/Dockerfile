@@ -7,5 +7,6 @@ RUN apt-get update \
     && rm -r /var/lib/apt/lists/*
 
 COPY ./public-html/ /usr/local/apache2/htdocs/
+COPY ./
 
 CMD ["httpd-foreground"]
