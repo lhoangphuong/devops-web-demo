@@ -36,7 +36,7 @@ pipeline {
                // Remove cached test results.
                sh 'go clean -cache'
                // Run Unit Tests.
-               sh 'go test ./*_test.go -v -short'           
+               sh 'go test ./... -v -short'           
            }
        }
        stage('Publish') {
@@ -50,6 +50,13 @@ pipeline {
                        appimage.push()
                        appimage.push('latest')
                    }
+               }
+           }
+       }
+       stage ('Deploy') {
+           steps {
+               script{
+                   sh "sh ~/deploy-docker.sh
                }
            }
        }
