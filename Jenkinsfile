@@ -56,8 +56,8 @@ pipeline {
        stage ('Deploy') {
            steps {
                script{
-                   sh "docker kill k8scicd"
-                   sh "docker run --name k8scicd -it -d -p 8081:8081 lhoangphuong/k8scicd"
+                   sh "docker container kill $(docker ps -q)"
+                   sh "docker run -it -d -p 8081:8081 lhoangphuong/k8scicd:latest"
                }
            }
        }
