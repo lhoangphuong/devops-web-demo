@@ -53,16 +53,5 @@ pipeline {
                }
            }
        }
-       stage ('Deploy') {
-           steps {
-               script{
-                sh '''
-                    docker kill k8scicd
-                    docker rm k8scicd
-                    docker run --name k8scicd -it -d -p 8081:8081 lhoangphuong/k8scicd:latest
-                '''
-               }
-           }
-       }
    }
 }
