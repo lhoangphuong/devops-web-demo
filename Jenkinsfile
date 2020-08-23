@@ -56,7 +56,7 @@ pipeline {
        stage ('Deploy') {
            steps {
                script{
-                   sh "sh ~/deploy-docker.sh
+                   sh "sh ~/deploy-docker.sh"
                }
            }
        }
