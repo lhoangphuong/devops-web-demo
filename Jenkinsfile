@@ -13,9 +13,9 @@ pipeline {
            steps {
                // Create our project directory.
                sh 'cd /usr/share/nginx'
-               sh 'mkdir -p usr/share/nginx/hello-world'
+               sh 'mkdir -p usr/share/nginx/test'
                // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/hello-world'
+               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/test'
                // Build the app.
                sh 'echo building something!!!'              
            }    
@@ -29,9 +29,9 @@ pipeline {
            steps {                
                // Create our project directory.
                sh 'cd /usr/share/nginx'
-               sh 'mkdir -p usr/share/nginx/hello-world'
+               sh 'mkdir -p usr/share/nginx/test'
                // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/hello-world'
+               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/test'
                // Run Unit Tests.
                sh 'echo running some test!!'          
            }
