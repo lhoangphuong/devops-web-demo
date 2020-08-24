@@ -2,7 +2,6 @@ pipeline {
    agent any
    environment {
        registry = "lhoangphuong/nginx"
-       GOCACHE = "/tmp"
    }
    stages {
        stage('Build') {
@@ -24,7 +23,7 @@ pipeline {
        stage('Test') {
            agent {
                docker {
-                   image 'golang'
+                   image 'lhoangphuong/nginx'
                }
            }
            steps {                
