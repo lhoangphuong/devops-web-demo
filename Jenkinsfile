@@ -12,10 +12,10 @@ pipeline {
            }
            steps {
                // Create our project directory.
-               sh 'cd /usr/share/nginx'
-               sh 'mkdir -p usr/share/nginx/test'
+               sh 'cd ${GOPATH}/src'
+               sh 'mkdir -p ${GOPATH}/src/hello-world'
                // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/test'
+               sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                // Build the app.
                sh 'echo building something!!!'              
            }    
@@ -28,10 +28,10 @@ pipeline {
            }
            steps {                
                // Create our project directory.
-               sh 'cd /usr/share/nginx'
-               sh 'mkdir -p usr/share/nginx/test'
+               sh 'cd ${GOPATH}/src'
+               sh 'mkdir -p ${GOPATH}/src/hello-world'
                // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* usr/share/nginx/test'
+               sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                // Run Unit Tests.
                sh 'echo running some test!!'          
            }
