@@ -13,7 +13,7 @@ pipeline {
            }
            steps {
                // Build the app.
-               sh 'echo building something!!!'              
+               echo 'building something!!!'              
            }    
        }
        stage('Test') {
@@ -24,7 +24,7 @@ pipeline {
            }
            steps {                
                // Run Unit Tests.
-               sh 'echo running some test!!'          
+               echo 'running some test!!'          
            }
        }
        stage('Publish') {
@@ -45,7 +45,7 @@ pipeline {
            steps {
                script{
                    // Deploy The App
-                   sh 'echo Deploy the App'
+                   echo 'Deploy the App'
                    sh 'docker-compose -f /docker/letsencrypt-docker-nginx/src/production/docker-compose.yml down'
                    sh 'docker-compose -f /docker/letsencrypt-docker-nginx/src/production/docker-compose.yml up -d'
                }
