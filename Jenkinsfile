@@ -44,12 +44,10 @@ pipeline {
        stage ('Deploy') {
            steps {
                script{
-                    dir('/docker/letsencrypt-docker-nginx/src/production') {
-                        // some block
-                    }
-                   sh 'pwd'
-                   sh 'docker-compose down'
-                   sh 'docker-compose up -d'
+                   // Deploy The App
+                   sh 'echo Deploy the App'
+                   sh 'docker-compose -f /docker/letsencrypt-docker-nginx/src/production/docker-compose.yml down'
+                   sh 'docker-compose -f /docker/letsencrypt-docker-nginx/src/production/docker-compose.yml up -d'
                }
            }
        }
