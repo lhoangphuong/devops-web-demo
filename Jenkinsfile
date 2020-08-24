@@ -12,10 +12,6 @@ pipeline {
                }
            }
            steps {
-               // Create our project directory.
-               sh "pwd"
-               // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* /src/hello-world'
                // Build the app.
                sh 'echo building something!!!'              
            }    
@@ -27,10 +23,6 @@ pipeline {
                }
            }
            steps {                
-               // Create our project directory.
-               sh "pwd"
-               // Copy all files in our Jenkins workspace to our project directory.               
-               sh 'cp -r ${WORKSPACE}/* /src/hello-world'
                // Run Unit Tests.
                sh 'echo running some test!!'          
            }
