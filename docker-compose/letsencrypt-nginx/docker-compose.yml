@@ -31,7 +31,16 @@ services:
     networks:
       - docker-network
 
+  mario:
+    container_name: 'mario'
+    image: pengbai/docker-supermario
+    ports:
+      - "8600:8080"
+    networks:
+      - docker-network
+
 networks:
   docker-network:
     driver: bridge
+
 
