@@ -5,7 +5,7 @@ pipeline {
        GOCACHE = "/tmp"
    }
    stages {
-       stage('Build') {
+       stage('Build-images') {
            agent {
                docker {
                    image 'lhoangphuong/nginx'
@@ -27,16 +27,26 @@ pipeline {
                echo 'running some test!!'          
            }
        }
-       stage('Publish') {
+       stage('Publis') {
            environment {
                registryCredential = 'dockerhub'
            }
            steps{
                script {
-                   def appimage = docker.build registry + ":$BUILD_NUMBER"
+                   def nginx = docker.build("lhoangphuong/nginx:${env.BUILD_ID}","-f ${env.WORKSPACE}/nginx/Dockerfile .")
                    docker.withRegistry( '', registryCredential ) {
-                       appimage.push()
-                       appimage.push('latest')
+                       nginx.push()
+                       nginx.push('latest')
+
+                   def chat = docker.build("lhoangphuong/chat:${env.BUILD_ID}","-f ${env.WORKSPACE}/chat/Dockerfile .")
+                   docker.withRegistry( '', registryCredential ) {
+                       chat.push()
+                       chat.push('latest')
+
+                   def whiteboard = docker.build("lhoangphuong/whiteboard:${env.BUILD_ID}","-f ${env.WORKSPACE}/whiteboard/Dockerfile .")
+                   docker.withRegistry( '', registryCredential ) {
+                       whiteboard.push()
+                       whiteboard.push('latest')
                    }
                }
            }
