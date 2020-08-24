@@ -27,31 +27,20 @@ pipeline {
                echo 'running some test!!'          
            }
        }
-       stage('Publis') {
+       stage('Publish') {
            environment {
                registryCredential = 'dockerhub'
            }
            steps{
                script {
-                   def nginx = docker.build("lhoangphuong/nginx:${env.BUILD_ID}","-f ${env.WORKSPACE}/nginx/Dockerfile .")
+                   def appimage = docker.build registry + ":$BUILD_NUMBER"
                    docker.withRegistry( '', registryCredential ) {
-                       nginx.push()
-                       nginx.push('latest')
-
-                   def chat = docker.build("lhoangphuong/chat:${env.BUILD_ID}","-f ${env.WORKSPACE}/chat/Dockerfile .")
-                   docker.withRegistry( '', registryCredential ) {
-                       chat.push()
-                       chat.push('latest')
-
-                   def whiteboard = docker.build("lhoangphuong/whiteboard:${env.BUILD_ID}","-f ${env.WORKSPACE}/whiteboard/Dockerfile .")
-                   docker.withRegistry( '', registryCredential ) {
-                       whiteboard.push()
-                       whiteboard.push('latest')
+                       appimage.push()
+                       appimage.push('latest')
                    }
                }
            }
        }
-    }
        stage ('Deploy') {
            steps {
                script{
