@@ -44,7 +44,9 @@ pipeline {
        stage ('Deploy') {
            steps {
                script{
-                   dir('/docker/letsencrypt-docker-nginx/src/production')
+                    dir('/docker/letsencrypt-docker-nginx/src/production') {
+                        // some block
+                    }
                    sh 'pwd'
                    sh 'docker-compose down'
                    sh 'docker-compose up -d'
