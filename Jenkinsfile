@@ -2,6 +2,7 @@ pipeline {
    agent any
    environment {
        registry = "lhoangphuong/nginx"
+       GOCACHE = "/tmp"
    }
    stages {
        stage('Build') {
