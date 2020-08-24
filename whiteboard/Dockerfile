@@ -4,9 +4,8 @@ FROM node:alpine
 WORKDIR /usr/app
 
 # Install some depenendencies
-COPY ./ ./
+COPY ./whiteboard ./
 RUN npm ci
-COPY ./ ./
 
 # Default command
 CMD ["npm", "start"]
