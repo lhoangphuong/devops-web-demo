@@ -4,7 +4,6 @@ pipeline {
        registry = "lhoangphuong/nginx"
        GOCACHE = "/tmp"
    }
-
    stages {
        stage('Build-Golang') {
            agent {
@@ -19,7 +18,7 @@ pipeline {
                // Copy all files in our Jenkins workspace to our project directory.               
                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                // Build the app.
-               sh 'go build'              
+               sh 'go build'            
            }    
        }
        stage('Test-Golang') {
@@ -37,31 +36,7 @@ pipeline {
                // Remove cached test results.
                sh 'go clean -cache'
                // Run Unit Tests.
-               sh 'go test ./*_test.go -v -short'          
-           }
-       }
-
-   stages {
-       stage('Build-images') {
-           agent {
-               docker {
-                   image 'lhoangphuong/nginx'
-               }
-           }
-           steps {
-               // Build the app.
-               echo 'building something!!!'              
-           }    
-       }
-       stage('Test') {
-           agent {
-               docker {
-                   image 'lhoangphuong/nginx'
-               }
-           }
-           steps {                
-               // Run Unit Tests.
-               echo 'running some test!!'          
+               sh 'go test ./*_test.go -v -short'        
            }
        }
        stage('Publish') {
