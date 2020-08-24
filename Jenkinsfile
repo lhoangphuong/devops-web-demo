@@ -29,6 +29,7 @@ pipeline {
            steps {                
                // Create our project directory.
                sh "ls"
+               sh "pwd"
                // Copy all files in our Jenkins workspace to our project directory.               
                sh 'cp -r ${WORKSPACE}/* /src/hello-world'
                // Run Unit Tests.
