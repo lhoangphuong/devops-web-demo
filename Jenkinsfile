@@ -13,7 +13,7 @@ pipeline {
            }
            steps {
                // Create our project directory.
-               sh 'mkdir -p /src/hello-world'
+               sh "ls"
                // Copy all files in our Jenkins workspace to our project directory.               
                sh 'cp -r ${WORKSPACE}/* /src/hello-world'
                // Build the app.
@@ -28,7 +28,7 @@ pipeline {
            }
            steps {                
                // Create our project directory.
-               sh 'mkdir -p /src/hello-world'
+               sh "ls"
                // Copy all files in our Jenkins workspace to our project directory.               
                sh 'cp -r ${WORKSPACE}/* /src/hello-world'
                // Run Unit Tests.
