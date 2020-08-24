@@ -1,12 +1,5 @@
-FROM httpd:2.4
+FROM nginx
+COPY public-html /usr/share/nginx/html
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    curl \
-    jq \
-    && rm -r /var/lib/apt/lists/*
 
-COPY ./public-html/ /usr/local/apache2/htdocs/
-COPY ./
 
-CMD ["httpd-foreground"]
